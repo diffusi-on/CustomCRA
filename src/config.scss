@@ -1,0 +1,26 @@
+//Определяет тему приложения. Переменные создаются для вещей используемых глобально или имеющих ключевое значение
+
+//Минимальная ширина контента
+$contentMinWidth: 320px;
+//Максимальная ширина контента
+$contentMaxWidth: 1024px;
+//Отступ от краев экрана и большинства элементов друг от друга
+$contentDefaultIndent: 10px;
+//Основной размер шрифта, остальные, в идеале, задаются относительно, через em
+$uiFontSize: 15px;
+//Основной тёмный цвет темы
+$uiDarkColor: #282c34;
+//Основной светлый цвет темы
+$uiLightColor: #d8fffa;
+//Цвет подсветки - выделение, наведение...
+$uiHighlightColor: #fff;
+//Цвет шрифта
+$uiFontColor: $uiLightColor;
+//Цвет ссылок
+$uiLinkColor: $uiHighlightColor;
+//Цвет обводи элементов
+$uiBorderColor: #81d3ce;
+//Прозрачность задизейбленного элемента
+$uiComponentDisabledOpacity: 0.5;
+//Цвет фона полей ввода
+$inputBackgroundColor: $uiHighlightColor;

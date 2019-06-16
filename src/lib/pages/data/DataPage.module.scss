@@ -1,0 +1,11 @@
+@import "config";
+
+.dataPage {
+  table {
+    margin: auto;
+    td {
+      padding: $contentDefaultIndent / 2;
+      border: 1px solid $uiBorderColor;
+    }
+  }
+}

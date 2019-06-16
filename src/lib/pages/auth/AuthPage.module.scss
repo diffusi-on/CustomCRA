@@ -1,0 +1,40 @@
+@import "config";
+
+.authPage {
+  form {
+    div[role=radiogroup] {
+      margin: $contentDefaultIndent;
+    }
+    label,
+    input[type=radio],
+    input[type=checkbox] {
+      margin: $contentDefaultIndent / 2;
+    }
+    input[type=text],
+    input[type=number],
+    input[type=date],
+    input[type=password],
+    select {
+      appearance: none;
+      display: inline-block;
+      width: $contentMinWidth - $contentDefaultIndent * 4;
+      height: 30px;
+      margin: $contentDefaultIndent $contentDefaultIndent / 2;
+      padding: 0 $contentDefaultIndent / 2;
+      border: 1px solid $uiBorderColor;
+      border-radius: 4px;
+      background-color: $inputBackgroundColor;
+      line-height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      &:required {
+        &:valid {
+          box-shadow: inset 0 0 5px #00cd00;
+        }
+      }
+    }
+    select {
+      text-align-last: center;
+    }
+  }
+}
