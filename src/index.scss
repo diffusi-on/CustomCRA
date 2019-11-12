@@ -18,6 +18,7 @@
 
 [disabled] {
   opacity: $uiComponentDisabledOpacity;
+  pointer-events: none;
   [disabled] {
     opacity: 1;
   }
@@ -60,5 +61,65 @@ a {
   font-weight: bold;
   &:active {
     opacity: 0.6;
+  }
+}
+
+form {
+  $inputWidth: $contentMinWidth - $contentDefaultIndent * 4;
+  $inputMargin: $contentDefaultIndent $contentDefaultIndent / 2;
+  label,
+  input[type=radio],
+  input[type=checkbox] {
+    margin: $contentDefaultIndent / 2;
+    vertical-align: middle;
+  }
+  input[type=text],
+  input[type=number],
+  input[type=tel],
+  input[type=email],
+  input[type=password],
+  select {
+    appearance: none;
+    display: inline-block;
+    width: $inputWidth;
+    height: 30px;
+    margin: $inputMargin;
+    padding: 0 $contentDefaultIndent / 2;
+    border: 1px solid $uiBorderColor;
+    border-radius: 4px;
+    background-color: $inputBackgroundColor;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    &:not(:placeholder-shown),
+    &:required {
+      &:invalid {
+        box-shadow: inset 0 0 7px #ff2500;
+      }
+    }
+  }
+  select {
+    text-align-last: center;
+  }
+  span {
+    vertical-align: middle;
+    &[role=radiogroup],
+    &[role=listbox] {
+      display: inline-flex;
+      justify-content: center;
+      width: $inputWidth;
+      margin: $inputMargin;
+      &[data-type=date] {
+        select {
+          margin: 0;
+          &:first-child {
+            margin-right: $contentDefaultIndent / 2;
+          }
+          &:last-child {
+            margin-left: $contentDefaultIndent / 2;
+          }
+        }
+      }
+    }
   }
 }

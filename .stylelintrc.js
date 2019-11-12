@@ -1,19 +1,17 @@
 /* eslint-disable */
 //--> Это node.js, тут свои правила...
-const fs = require("fs");
-const path = require("path");
+const Fs = require("fs");
+const Path = require("path");
 
 const unsupportedBrowserFeaturesIgnoreList = [
   "css-appearance",
-  "css-gradients",
   "css-filters",
   "border-image",
   "user-select-none",
   "text-size-adjust",
-  "word-break",
-  "flexbox"
+  "word-break"
 ]
-const browsersList = JSON.parse(fs.readFileSync(path.resolve(__dirname, "package.json"), "utf8")).browserslist;
+const browsersList = JSON.parse(Fs.readFileSync(Path.resolve(process.cwd(), "package.json"), "utf8")).browserslist;
 const namePattern = "^[a-z]+([A-Z][a-z]+)*[A-Z]?$";
 
 module.exports = {

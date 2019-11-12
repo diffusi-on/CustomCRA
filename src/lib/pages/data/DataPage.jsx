@@ -2,27 +2,28 @@ import CommonCss from "lib/common/Common.module.scss";
 
 import Css from "lib/pages/data/DataPage.module.scss";
 
-import { memoize } from "decko";
+import { bind } from "decko";
+import { inject, observer } from "mobx-react";
 import Config from "const/Config";
 import React, { Component } from "react";
-import Utils from "utils/Utils";
+import classNames from "classnames";
 
-export default class DataPage extends Component {
+export default @inject("store") @observer class DataPage extends Component {
   render() {
     return (
-      <main className={Utils.makeClassName(CommonCss.page, Css.dataPage)}>
-        {this.renderTable(Config.TABLE_ROWS_QUANTITY)}
+      <main className={classNames(CommonCss.page, Css.dataPage)}>
+        <button className={CommonCss.button} onClick={this.handleAddButtonClick}>Add new (async)</button>
+        {this.renderTable()}
       </main>
     );
   }
 
-  @memoize
-  renderTable(length) {
+  renderTable() {
     let key = 0;
     return (
       <table>
         <tbody>
-          {new Array(length).fill().map((value, index) => {
+          {this.props.store.data.map((value, index) => {
             return (
               <tr key={`key${++key}`}>
                 <td>{index}</td>
@@ -33,5 +34,20 @@ export default class DataPage extends Component {
         </tbody>
       </table>
     );
+  }
+
+  componentDidMount() {
+    new Array(Config.TABLE_ROWS_QUANTITY).fill().forEach(() => {
+      this.props.store.addItem(Math.random());
+    });
+  }
+
+  @bind
+  handleAddButtonClick() {
+    this.props.store
+      .addItem(Math.random(), Config.REQUEST_DELAY)
+      .then((item) => {
+        console.log("New item added %s", item); //eslint-disable-line no-console
+      });
   }
 }

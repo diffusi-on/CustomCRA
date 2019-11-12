@@ -2,7 +2,8 @@
 
 .dataPage {
   table {
-    margin: auto;
+    width: $contentMinWidth - ($contentDefaultIndent * 2);
+    margin: $contentDefaultIndent auto;
     td {
       padding: $contentDefaultIndent / 2;
       border: 1px solid $uiBorderColor;

@@ -3,12 +3,11 @@
 export default class Config {
   static REQUEST_DELAY = 300;
 
-  static TABLE_ROWS_QUANTITY = 999;
+  static TABLE_ROWS_QUANTITY = 3;
 
-  static CREDENTIALS_RESTRICTIONS = {
-    MIN_LENGTH: 3,
-    MAX_LENGTH: 12,
-    PATTERN: "[a-zA-Zа-яА-Я0-9_-]"
+  static INPUT_FIELDS_RESTRICTIONS = {
+    LOGIN: { minLength: 6, maxLength: 20, pattern: /^[a-zA-Z0-9-_]+$/ },
+    PASSWORD: { minLength: 6, maxLength: 20, pattern: /^[a-zA-Z0-9-_]+$/ }
   };
 
   static ACCESS_TYPES = {

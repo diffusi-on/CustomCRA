@@ -1,3 +1,4 @@
+//Компонент, объединяющий элементы radio в группу
 import FormElement from "lib/common/ui/form/FormElement";
 import React from "react";
 
@@ -14,8 +15,9 @@ export default class RadioGroup extends FormElement {
   }
 
   render() {
+    const { innerRef, ...restProps } = this.props;
     return (
-      <div role="radiogroup" {...this.props}>{this.props.children}</div>
+      <span {...restProps} data-custominput role="radiogroup" ref={innerRef}>{this.props.children}</span>
     );
   }
 }

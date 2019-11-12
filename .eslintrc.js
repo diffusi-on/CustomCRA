@@ -1,6 +1,6 @@
 /* eslint-disable */
 //--> Это node.js, тут свои правила...
-const path = require("path");
+const Path = require("path");
 
 module.exports = {
   "env": {
@@ -23,6 +23,7 @@ module.exports = {
     "css-modules",
     "filenames",
     "import",
+    "no-loops",
     "promise",
     "react",
     "sort-class-members",
@@ -165,7 +166,7 @@ module.exports = {
     "guard-for-in": "warn",
     "id-match": [
       "warn",
-      "^(([A-Z]?[a-z]+)+[A-Z]?|[A-Z](_?[A-Z])+[A-Z])$"
+      "^(([A-Z]?[a-z]+)+[A-Z]?|[A-Z](_?[A-Z])+)$"
     ],
     "id-length": [
       "warn",
@@ -254,7 +255,6 @@ module.exports = {
     "no-alert": "warn",
     "no-array-constructor": "warn",
     "no-async-promise-executor": "warn",
-    "no-await-in-loop": "warn",
     "no-caller": "warn",
     "no-case-declarations": "warn",
     "no-catch-shadow": "warn",
@@ -277,7 +277,12 @@ module.exports = {
     "no-duplicate-case": "warn",
     "no-duplicate-imports": "warn",
     "no-else-return": "warn",
-    "no-empty": "warn",
+    "no-empty": [
+      "warn",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
     "no-empty-character-class": "warn",
     "no-empty-function": "warn",
     "no-empty-pattern": "warn",
@@ -305,6 +310,7 @@ module.exports = {
     "no-lone-blocks": "warn",
     "no-lonely-if": "warn",
     "no-loop-func": "warn",
+    "no-loops/no-loops": "warn",
     "no-magic-numbers": [
       "warn",
       {
@@ -330,6 +336,7 @@ module.exports = {
     "no-native-reassign": "warn",
     "no-negated-condition": "warn",
     "no-negated-in-lhs": "warn",
+    "no-nested-ternary": "off",
     "no-new-func": "warn",
     "no-new-object": "warn",
     "no-obj-calls": "warn",
@@ -576,7 +583,6 @@ module.exports = {
       {
         "order": [
           "[static-properties]",
-          "[static-init-methods]",
           "[static-get-methods]",
           "[static-set-methods]",
           "[static-methods]",
@@ -587,20 +593,12 @@ module.exports = {
           "[setters]",
           "[get-methods]",
           "[set-methods]",
-          "[init-methods]",
           "[render-methods]",
           "[methods]",
           "[react-lifecycle-methods]",
           "[event-handlers]"
         ],
         "groups": {
-          "static-init-methods": [
-            {
-              "name": "/^init.*$/",
-              "type": "method",
-              "static": true
-            }
-          ],
           "static-get-methods": [
             {
               "name": "/^get.*$/",
@@ -621,13 +619,6 @@ module.exports = {
               "type": "method"
             }
           ],
-          "init-methods": [
-            {
-              "name": "/^init.*$/",
-              "type": "method",
-              "static": false
-            }
-          ],
           "get-methods": [
             {
               "name": "/^get.*$/",
@@ -644,7 +635,7 @@ module.exports = {
           ],
           "render-methods": [
             {
-              "name": "/^render.*$/",
+              "name": "/^render$/",
               "type": "method",
               "static": false
             }
@@ -710,13 +701,15 @@ module.exports = {
     "unicorn/new-for-builtins": "warn",
     "unicorn/no-array-instanceof": "warn",
     "unicorn/no-fn-reference-in-iterator": "warn",
-    "unicorn/no-for-loop": "warn",
     "unicorn/no-hex-escape": "warn",
+    "unicorn/no-nested-ternary": "warn",
     "unicorn/no-new-buffer": "warn",
     "unicorn/no-zero-fractions": "warn",
     "unicorn/number-literal-case": "warn",
     "unicorn/prefer-add-event-listener": "warn",
+    "unicorn/prefer-dataset": "warn",
     "unicorn/prefer-includes": "warn",
+    "unicorn/prefer-reflect-apply": "warn",
     "unicorn/prefer-spread": "warn",
     "unicorn/prefer-starts-ends-with": "warn",
     "unicorn/prefer-type-error": "warn",

@@ -1,8 +1,16 @@
 //Содержит вспомогательные функции, не связанные с логикой приложения
 import { memoize } from "decko";
 import Config from "const/Config";
+import makeUuid, { URL as uuidUrl } from "uuid/v5";
 
 export default class Utils {
+  static uuidNamespace = makeUuid(window.location.origin, uuidUrl);
+
+  //Возвращает тип устройства
+  static getClientType() {
+    return Utils.checkIsTouchDevice() ? Config.CLIENT_TYPES.MOBILE : Config.CLIENT_TYPES.DESKTOP;
+  }
+
   //Неглубокое сравнение свойств объектов
   static checkShallowEquality(objA, objB) {
     const objPropsA = Object.keys(objA);
@@ -13,23 +21,24 @@ export default class Utils {
     });
   }
 
-  //Проверка, являеться ли это тач устройством
+  //Проверка, является ли это тач устройством
   static checkIsTouchDevice() {
     return "ontouchstart" in window;
   }
 
-  //Конкатенация имен CSS классов
-  static makeClassName(...args) {
-    return args.join(" ");
+  //Возвращает уникальный uuid, одинаковый для одного и того-же текста
+  @memoize
+  static makeUniqueKey(text) {
+    return makeUuid(text, Utils.uuidNamespace);
   }
 
   //Обертка для ajax запросов (через fetch, либо что-то другое)
-  static makeAjaxRequest(request, noDelay = false) {
-    if (noDelay) return fetch(request);
+  static makeAjaxRequest(request, requestParams = null, noDelay = false) {
+    if (noDelay) return fetch(request, requestParams);
     return new Promise((resolve, reject) => {
       setTimeout(
         () => {
-          fetch(request)
+          fetch(request, requestParams)
             .then((responseData) => { resolve(responseData); })
             .catch((error) => { reject(error); });
         },
@@ -77,6 +86,13 @@ export default class Utils {
     return newText;
   }
 
+  //Делает первую букву каждого слова, заглавной
+  @memoize
+  static capitalizeText(text) {
+    if (!text) return null;
+    return text.split(" ").map((word) => word[0].toUpperCase() + word.substring(1)).join(" ");
+  }
+
   //Читает, сохраняет, удаляет данные в session / local storage
   static storageValue(key, value, useSessionStorage = false) {
     const storage = useSessionStorage ? sessionStorage : localStorage;
@@ -93,5 +109,13 @@ export default class Utils {
     } catch (error) {
       return null;
     }
+  }
+
+  //Конвертирует целые числа (центы) в формат xxx.xx
+  @memoize
+  static toMoneyString(money) {
+    const centsPerDollar = 100;
+    const fractionDigits = 2;
+    return (money / centsPerDollar).toFixed(fractionDigits);
   }
 }

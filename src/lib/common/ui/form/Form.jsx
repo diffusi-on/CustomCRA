@@ -1,5 +1,6 @@
 //Компонент форм, управляемый через стейт
 import { bind } from "decko";
+import Async from "utils/Async";
 import React, { Component } from "react";
 import Utils from "utils/Utils";
 
@@ -10,8 +11,9 @@ export default class Form extends Component {
 
   constructor(props) {
     super(props);
+    this.formComponent = React.createRef();
     if (this.props.initialValues === undefined) {
-      throw new Error("Prop initialValues is required for every Form component");
+      throw new Error("Prop 'initialValues' is required for every Form component");
     }
     this.state = {
       formState: this.props.initialValues,
@@ -19,9 +21,9 @@ export default class Form extends Component {
     };
     this.formApi = {
       setValues: this.setValues,
-      resetForm: this.resetForm
+      resetForm: this.resetForm,
+      checkFormFilled: this.checkFormFilled
     };
-    this.UNSAFE_componentWillReceiveProps = this.componentWillReceiveProp;
   }
 
   getChildContext() {
@@ -41,10 +43,16 @@ export default class Form extends Component {
     });
   }
 
+  @bind
+  setComponentRef(element) {
+    this.formComponent.current = element;
+    if (this.props.innerRef) this.props.innerRef.current = element;
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.props.children(this.state)}
+      <form ref={this.setComponentRef} onSubmit={this.handleSubmit}>
+        {this.props.children({ ...this.state, formApi: this.formApi })}
       </form>
     );
   }
@@ -62,6 +70,11 @@ export default class Form extends Component {
     }
   }
 
+  @bind
+  checkFormFilled() {
+    return Object.keys(this.state.formState).every((key) => !!this.state.formState[key]);
+  }
+
   validateForm(formState, validateFunction) {
     const validateResult = validateFunction(formState);
     let formErrors = null;
@@ -74,36 +87,64 @@ export default class Form extends Component {
     return formErrors;
   }
 
-  componentWillReceiveProp(nextProps) {
-    if (!Utils.checkShallowEquality(this.props.initialValues, nextProps.initialValues)) {
-      this.setValues(nextProps.initialValues);
+  updateFormState(currentTarget) {
+    return new Promise((resolve) => {
+      this.setState(
+        (prevState) => {
+          const newState = {
+            formState: { ...prevState.formState, [currentTarget.name]: currentTarget.value }
+          };
+          if (this.props.validate) {
+            newState.formErrors = this.validateForm(newState.formState, this.props.validate);
+          }
+          return newState;
+        },
+        () => {
+          const errorMessage = this.state.formErrors ? this.state.formErrors[currentTarget.name] : null;
+          if (currentTarget.setCustomValidity) {
+            if (currentTarget.value.length && this.props.validate && errorMessage) {
+              currentTarget.setCustomValidity(errorMessage);
+            } else currentTarget.setCustomValidity("");
+          }
+          resolve();
+        }
+      );
+    });
+  }
+
+  componentDidMount() {
+    const { current: formComponent } = this.formComponent;
+    const { formState } = this.state;
+    (async() => {
+      await Async.runInSequence(
+        Object.entries(formState)
+          .map(([key, value]) => {
+            const currentTarget = formComponent[key];
+            if (value && currentTarget && currentTarget.name) return () => this.updateFormState(currentTarget);
+            return null;
+          })
+          .filter((value) => !!value)
+      );
+    })();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!Utils.checkShallowEquality(prevProps.initialValues, this.props.initialValues)) {
+      this.setValues(this.props.initialValues);
     }
   }
 
   @bind
   handleChange({ currentTarget }) {
-    this.setState(
-      (prevState) => {
-        const newState = {
-          formState: { ...prevState.formState, [currentTarget.name]: currentTarget.value }
-        };
-        if (this.props.validate) {
-          newState.formErrors = this.validateForm(newState.formState, this.props.validate);
-        }
-        return newState;
-      },
-      () => {
-        if (this.props.validate && this.state.formErrors) {
-          currentTarget.setCustomValidity(this.state.formErrors[currentTarget.name] || "");
-        } else currentTarget.setCustomValidity("");
+    this.updateFormState(currentTarget)
+      .then(() => {
         if (this.props.onChange) this.props.onChange({
           formState: this.state.formState,
           formErrors: this.state.formErrors,
           formApi: this.formApi,
           form: currentTarget
         });
-      }
-    );
+      });
   }
 
   @bind

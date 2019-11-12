@@ -11,15 +11,21 @@
 .button {
   appearance: none;
   margin: $contentDefaultIndent / 2;
-  padding: $contentDefaultIndent / 2;
+  padding: $contentDefaultIndent;
   border: 2px solid $uiBorderColor;
+  border-radius: $contentDefaultIndent;
   background: $uiDarkColor;
   color: $uiLightColor;
   text-transform: uppercase;
+  cursor: pointer;
+  &:not([disabled]) {
+    &:active {
+      border-color: $uiLightColor;
+    }
+  }
 }
 
-.highlight,
-.button:active {
+.highlight {
   color: $uiHighlightColor;
 }
 
