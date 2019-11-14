@@ -23,11 +23,10 @@ export default @inject("store") @observer class DataPage extends Component {
     return (
       <table>
         <tbody>
-          {this.props.store.data.map((value, index) => {
+          {this.props.store.data.map(({ name }, index) => {
             return (
               <tr key={`key${++key}`}>
-                <td>{index}</td>
-                <td>{Math.random()}</td>
+                <td>{`${name.title}. ${name.first} ${name.last}`}</td>
               </tr>
             );
           })}
@@ -37,17 +36,15 @@ export default @inject("store") @observer class DataPage extends Component {
   }
 
   componentDidMount() {
-    new Array(Config.TABLE_ROWS_QUANTITY).fill().forEach(() => {
-      this.props.store.addItem(Math.random());
-    });
+    this.props.store.addUser();
   }
 
   @bind
   handleAddButtonClick() {
     this.props.store
-      .addItem(Math.random(), Config.REQUEST_DELAY)
-      .then((item) => {
-        console.log("New item added %s", item); //eslint-disable-line no-console
+      .addUser()
+      .then(({ name }) => {
+        console.log(`${name.title}. ${name.first} ${name.last}`);//eslint-disable-line no-console
       });
   }
 }

@@ -12,22 +12,12 @@ export default @remoteDev class MainStore {
   }
 
   @action
-  addItem(item, timeout) {
-    return new Promise((resolve) => {
-      const updateData = () => {
-        this.data.push(item);
-        resolve(item);
-      };
-      if (timeout) {
-        setTimeout(
-          () => {
-            runInAction(updateData);
-          },
-          timeout
-        );
-      } else {
-        runInAction(updateData);
-      }
+  async addUser() {
+    const response = await fetch("https://randomuser.me/api/");
+    const { results: [user] } = await response.json();
+    runInAction(() => {
+      this.data.push(user);
     });
+    return user;
   }
 }

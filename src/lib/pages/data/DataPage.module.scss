@@ -4,6 +4,7 @@
   table {
     width: $contentMinWidth - ($contentDefaultIndent * 2);
     margin: $contentDefaultIndent auto;
+    text-align: left;
     td {
       padding: $contentDefaultIndent / 2;
       border: 1px solid $uiBorderColor;

@@ -142,7 +142,9 @@ export default class Form extends Component {
           formState: this.state.formState,
           formErrors: this.state.formErrors,
           formApi: this.formApi,
-          form: currentTarget
+          field: currentTarget,
+          fieldName: currentTarget.name,
+          fieldValue: currentTarget.value
         });
       });
   }

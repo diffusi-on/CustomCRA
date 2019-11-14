@@ -17,10 +17,8 @@
   min-height: 100%;
   background-color: $uiDarkColor;
   .logo {
-    width: 50%;
-    max-width: $contentMaxWidth - $contentDefaultIndent * 2;
-    max-height: 150px;
-    animation: logoSpininfinite 20s linear;
+    height: 100px;
+    animation: logoSpin infinite 20s linear;
     cursor: pointer;
   }
 }
