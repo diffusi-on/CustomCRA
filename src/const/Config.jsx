@@ -1,9 +1,9 @@
 //Основной файл конфигурации приложения
 /* eslint-disable no-magic-numbers */
 export default class Config {
-  static REQUEST_DELAY = 300;
+  static DATA_API_URL = "https://randomuser.me/api/";
 
-  static TABLE_ROWS_QUANTITY = 3;
+  static AUTH_LS_KEY = "authData";
 
   static INPUT_FIELDS_RESTRICTIONS = {
     LOGIN: { minLength: 6, maxLength: 20, pattern: /^[a-zA-Z0-9-_]+$/ },

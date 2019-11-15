@@ -4,7 +4,6 @@ import Css from "lib/pages/data/DataPage.module.scss";
 
 import { bind } from "decko";
 import { inject, observer } from "mobx-react";
-import Config from "const/Config";
 import React, { Component } from "react";
 import classNames from "classnames";
 
@@ -23,7 +22,7 @@ export default @inject("store") @observer class DataPage extends Component {
     return (
       <table>
         <tbody>
-          {this.props.store.data.map(({ name }, index) => {
+          {this.props.store.data.map(({ name }) => {
             return (
               <tr key={`key${++key}`}>
                 <td>{`${name.title}. ${name.first} ${name.last}`}</td>
@@ -36,13 +35,13 @@ export default @inject("store") @observer class DataPage extends Component {
   }
 
   componentDidMount() {
-    this.props.store.addUser();
+    if (!this.props.store.data.length) this.props.store.addItem();
   }
 
   @bind
   handleAddButtonClick() {
     this.props.store
-      .addUser()
+      .addItem()
       .then(({ name }) => {
         console.log(`${name.title}. ${name.first} ${name.last}`);//eslint-disable-line no-console
       });

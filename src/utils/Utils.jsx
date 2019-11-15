@@ -32,21 +32,6 @@ export default class Utils {
     return makeUuid(text, Utils.uuidNamespace);
   }
 
-  //Обертка для ajax запросов (через fetch, либо что-то другое)
-  static makeAjaxRequest(request, requestParams = null, noDelay = false) {
-    if (noDelay) return fetch(request, requestParams);
-    return new Promise((resolve, reject) => {
-      setTimeout(
-        () => {
-          fetch(request, requestParams)
-            .then((responseData) => { resolve(responseData); })
-            .catch((error) => { reject(error); });
-        },
-        Config.REQUEST_DELAY
-      );
-    });
-  }
-
   //Запускает функцию, после текущего потока выполнения
   static deferredRun(func, ...args) {
     setTimeout(func, 0, ...args);

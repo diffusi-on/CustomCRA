@@ -14,7 +14,7 @@ export default class MainPage extends Component {
         <p>Edit <code>src/App.jsx</code> and save to reload.</p>
         <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">Learn React</a>
         <hr />
-        <div><NavLink to={RoutesConfig.AUTH.path}>Auth page</NavLink></div>
+        <div><NavLink to={RoutesConfig.STATIC.path}>Static page</NavLink></div>
         <div><NavLink to={RoutesConfig.DATA.path}>Data page</NavLink></div>
       </main>
     );

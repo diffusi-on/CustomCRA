@@ -4,6 +4,7 @@ import Css from "lib/pages/auth/AuthPage.module.scss";
 
 import * as Router from "react-router";
 import { bind } from "decko";
+import { inject } from "mobx-react";
 import Form from "lib/common/ui/form/Form";
 import FormValidations from "validations/FormValidations";
 import Input from "lib/common/ui/form/Input";
@@ -11,7 +12,7 @@ import React, { Component, Fragment } from "react";
 import RoutesConfig from "const/RoutesConfig";
 import classNames from "classnames";
 
-class AuthPage extends Component {
+@inject("store") class AuthPage extends Component {
   render() {
     return (
       <main className={classNames(CommonCss.page, Css.authPage)}>
@@ -46,8 +47,8 @@ class AuthPage extends Component {
   }
 
   @bind
-  handleAuthFormSubmit() {
-    this.props.history.push(RoutesConfig.DATA.path);
+  handleAuthFormSubmit({ formState }) {
+    this.props.store.authUser(formState.login);
   }
 
   @bind

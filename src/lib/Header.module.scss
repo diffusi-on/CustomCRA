@@ -16,6 +16,14 @@
   justify-content: center;
   min-height: 100%;
   background-color: $uiDarkColor;
+  .logout {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      color: #ff0;
+    }
+  }
   .logo {
     height: 100px;
     animation: logoSpin infinite 20s linear;
