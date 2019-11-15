@@ -18,14 +18,14 @@ export default @inject("store") @observer class DataPage extends Component {
   }
 
   renderTable() {
-    let key = 0;
     return (
       <table>
         <tbody>
-          {this.props.store.data.map(({ name }) => {
+          {this.props.store.data.map(({ name, login }) => {
+            const fullName = `${name.title}. ${name.first} ${name.last}`;
             return (
-              <tr key={`key${++key}`}>
-                <td>{`${name.title}. ${name.first} ${name.last}`}</td>
+              <tr key={login.uuid}>
+                <td>{fullName}</td>
               </tr>
             );
           })}
