@@ -4089,15 +4089,15 @@ eslint-plugin-sort-imports-es6-autofix@^0.5.0:
   dependencies:
     eslint "^6.2.2"
 
-eslint-plugin-unicorn@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-12.1.0.tgz#6ebff6c90ecf4df7ce1615e18928d10bb50c2ff5"
-  integrity sha512-DkPRrjaZaKa8GDjEyWGms/sqp2DcmVCcbwVi9WQXwN6+Sn0/joTC14SfA+BsCuxTaGPRm/7wa8NC8o5mNDyZpQ==
+eslint-plugin-unicorn@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-13.0.0.tgz#3d73a17cc34ade1aaa02655ae78bbd8a2053fa81"
+  integrity sha512-9CQk0v74vQpETMt6iqNgjf3IbWEFhrT0sjaLnjkl9SF3rJH6ZL9f7H42BXJ6LPENQR97QzhrIvB8VG0nD05wxQ==
   dependencies:
     ci-info "^2.0.0"
     clean-regexp "^1.0.0"
     eslint-ast-utils "^1.1.0"
-    eslint-template-visitor "^1.0.0"
+    eslint-template-visitor "^1.1.0"
     import-modules "^2.0.0"
     lodash.camelcase "^4.3.0"
     lodash.defaultsdeep "^4.6.1"
@@ -4108,7 +4108,7 @@ eslint-plugin-unicorn@^12.1.0:
     read-pkg-up "^7.0.0"
     regexpp "^3.0.0"
     reserved-words "^0.1.2"
-    safe-regex "^2.0.2"
+    safe-regex "^2.1.1"
     semver "^6.3.0"
 
 eslint-rule-composer@^0.3.0:
@@ -4132,7 +4132,7 @@ eslint-scope@^5.0.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-template-visitor@^1.0.0:
+eslint-template-visitor@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/eslint-template-visitor/-/eslint-template-visitor-1.1.0.tgz#f090d124d1a52e05552149fc50468ed59608b166"
   integrity sha512-Lmy6QVlmFiIGl5fPi+8ACnov3sare+0Ouf7deJAGGhmUfeWJ5fVarELUxZRpsZ9sHejiJUq8626d0dn9uvcZTw==
@@ -9296,15 +9296,15 @@ react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.11.0:
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
-  integrity sha512-nrRyIUE1e7j8PaXSPtyRKtz+2y9ubW/ghNgqKFHHAHaeP0fpF5uXR+sq8IMRHC+ZUxw7W9NyCDTBtwWxvkb0iA==
+react-dom@^16.12.0:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
+  integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.17.0"
+    scheduler "^0.18.0"
 
 react-error-overlay@^6.0.3:
   version "6.0.3"
@@ -9406,10 +9406,10 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react@^16.11.0:
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
-  integrity sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==
+react@^16.12.0:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
+  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -10024,7 +10024,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-safe-regex@^2.0.2:
+safe-regex@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/safe-regex/-/safe-regex-2.1.1.tgz#f7128f00d056e2fe5c11e81a1324dd974aadced2"
   integrity sha512-rx+x8AMzKb5Q5lQ95Zoi6ZbJqwCLkqi3XuJXp5P3rT8OEc6sZCJG5AE5dU3lsgRr/F4Bs31jSlVN+j5KrsGu9A==
@@ -10101,10 +10101,10 @@ sc-formatter@^3.0.1:
   resolved "https://registry.yarnpkg.com/sc-formatter/-/sc-formatter-3.0.2.tgz#9abdb14e71873ce7157714d3002477bbdb33c4e6"
   integrity sha512-9PbqYBpCq+OoEeRQ3QfFIGE6qwjjBcd2j7UjgDlhnZbtSnuGgHdcRklPKYGuYFH82V/dwd+AIpu8XvA1zqTd+A==
 
-scheduler@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.17.0.tgz#7c9c673e4ec781fac853927916d1c426b6f3ddfe"
-  integrity sha512-7rro8Io3tnCPuY4la/NuI5F2yfESpnfZyT6TtkXnSWVkcu0BCDJ+8gk5ozUaFaxpIyNuWAPXrH0yFcSi28fnDA==
+scheduler@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.18.0.tgz#5901ad6659bc1d8f3fdaf36eb7a67b0d6746b1c4"
+  integrity sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -10118,7 +10118,7 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-schema-utils@^2.0.0, schema-utils@^2.0.1, schema-utils@^2.2.0:
+schema-utils@^2.0.0, schema-utils@^2.0.1, schema-utils@^2.2.0, schema-utils@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.5.0.tgz#8f254f618d402cc80257486213c8970edfd7c22f"
   integrity sha512-32ISrwW2scPXHUSusP8qMg5dLUawKkyV+/qIEV9JdXKx+rsM6mi8vZY8khg2M69Qom16rtroWXD3Ybtiws38gQ==
@@ -10897,14 +10897,14 @@ stylelint-scss@^3.12.1:
     postcss-selector-parser "^6.0.2"
     postcss-value-parser "^4.0.2"
 
-stylelint-webpack-plugin@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-1.0.3.tgz#d693563d52ef0f8337de1df08d095f55d63a58fc"
-  integrity sha512-nip6kUc+DhQaxxuUGL5SWQ+HRDV89rcxTW/FFbMp4wjoCVHTRcNacHZbT3qNQFWKnxRsz6Yfqy480zYTdxXkTg==
+stylelint-webpack-plugin@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-1.0.4.tgz#3fe696aa38f6e105f5a2ac56f49d17949800c630"
+  integrity sha512-klDJLPDGX4kbXcya4CSK0Bvot2isVx1+mCKGM8WYVhFBTqHhvTOMxoz1JJnLaDwfMzdXJh7bA/REPCgipfp6WQ==
   dependencies:
     arrify "^2.0.1"
     micromatch "^4.0.2"
-    schema-utils "^2.2.0"
+    schema-utils "^2.5.0"
 
 stylelint@^11.1.1:
   version "11.1.1"

@@ -16,7 +16,8 @@ export default @remoteDev class MainStore {
     } catch (exception) {}
   }
 
-  @action authUser(login) {
+  @action
+  authUser(login) {
     this.user = { login, token: makeUuid() };
     Utils.storageValue(Config.AUTH_LS_KEY, JSON.stringify(this.user));
   }
