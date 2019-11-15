@@ -10,6 +10,8 @@ export default @remoteDev class MainStore {
 
   @observable data = [];
 
+  @observable dataFetching = false;
+
   constructor() {
     try {
       this.user = JSON.parse(Utils.storageValue(Config.AUTH_LS_KEY));
@@ -30,11 +32,19 @@ export default @remoteDev class MainStore {
 
   @action
   async addItem() {
+    this.dataFetching = true;
     const response = await fetch(Config.DATA_API_URL);
     const { results: [user] } = await response.json();
     runInAction(() => {
+      this.dataFetching = false;
       this.data.push(user);
     });
     return user;
+  }
+
+  @action
+  removeItem(uuid) {
+    const itemIndex = this.data.findIndex(({ login }) => login.uuid === uuid);
+    this.data.splice(itemIndex, 1);
   }
 }

@@ -5,13 +5,8 @@
     width: $contentMinWidth - ($contentDefaultIndent * 2);
     margin: $contentDefaultIndent auto;
     text-align: left;
-    td {
-      padding: $contentDefaultIndent / 2;
-      border: 1px solid $uiBorderColor;
-      cursor: pointer;
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-    }
+  }
+  .counter {
+    margin-top: $contentDefaultIndent;
   }
 }
