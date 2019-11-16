@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "baseUrl": "src",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
