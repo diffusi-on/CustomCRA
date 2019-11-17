@@ -12,7 +12,8 @@ import React, { Component, Fragment } from "react";
 import RoutesConfig from "const/RoutesConfig";
 import classNames from "classnames";
 
-@inject("store") class AuthPage extends Component {
+@inject("store")
+class AuthPage extends Component {
   render() {
     return (
       <main className={classNames(CommonCss.page, Css.authPage)}>
