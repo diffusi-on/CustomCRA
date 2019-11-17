@@ -95,12 +95,4 @@ export default class Utils {
       return null;
     }
   }
-
-  //Конвертирует целые числа (центы) в формат xxx.xx
-  @memoize
-  static toMoneyString(money) {
-    const centsPerDollar = 100;
-    const fractionDigits = 2;
-    return (money / centsPerDollar).toFixed(fractionDigits);
-  }
 }

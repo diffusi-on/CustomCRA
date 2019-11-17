@@ -15,4 +15,9 @@ export default class Config {
     AUTH: "auth",
     GUEST: "guest"
   };
+
+  static CLIENT_TYPES = {
+    DESKTOP: "desktop",
+    MOBILE: "mobile"
+  };
 }
