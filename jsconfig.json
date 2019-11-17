@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "baseUrl": "src",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "module": "commonjs"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
