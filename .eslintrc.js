@@ -483,7 +483,6 @@ module.exports = {
       "warn",
       "never"
     ],
-    "react/jsx-filename-extension": "warn",
     "react/jsx-first-prop-new-line": [
       "warn",
       "multiline"
