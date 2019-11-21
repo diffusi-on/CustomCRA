@@ -1,7 +1,5 @@
 /* eslint-disable */
 //--> Это node.js, тут свои правила...
-const Path = require("path");
-
 module.exports = {
   "env": {
     "browser": true,
