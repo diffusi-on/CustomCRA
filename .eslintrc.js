@@ -151,8 +151,7 @@ module.exports = {
       "warn",
       "consistent"
     ],
-    "func-style":
-    [
+    "func-style": [
       "warn",
       "expression"
     ],
@@ -175,7 +174,7 @@ module.exports = {
           "c"
         ],
         "min": 2,
-        "properties": "never",
+        "properties": "never"
       }
     ],
     "import/default": "warn",
@@ -650,7 +649,7 @@ module.exports = {
               "type": "method",
               "static": false
             }
-          ],
+          ]
         }
       }
     ],
