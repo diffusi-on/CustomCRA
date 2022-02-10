@@ -24,7 +24,7 @@
     "mobx-react": "^6.1.4",
     "mobx-remotedev": "^0.3.6",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "normalize-scss": "^7.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
