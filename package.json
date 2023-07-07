@@ -31,7 +31,7 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "stylelint": "^11.1.1",
+    "stylelint": "^15.10.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
     "stylelint-high-performance-animation": "^1.3.0",
     "stylelint-no-unsupported-browser-features": "^4.0.0",
